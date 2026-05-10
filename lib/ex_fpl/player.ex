@@ -1,3 +1,4 @@
+# credo:disable-for-this-file Credo.Check.Warning.StructFieldAmount
 defmodule ExFPL.Player do
   @moduledoc """
   A player ("element" in ExFPL parlance) as returned by `/bootstrap-static/`.
