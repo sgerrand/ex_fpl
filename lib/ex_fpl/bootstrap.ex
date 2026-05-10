@@ -22,15 +22,16 @@ defmodule ExFPL.Bootstrap do
     key = cache_key(raw)
 
     case use_cache && Cache.get(key) do
-      {:ok, value} ->
-        {:ok, value}
+      {:ok, value} -> {:ok, value}
+      _ -> fetch_and_cache(key, raw, use_cache, opts)
+    end
+  end
 
-      _ ->
-        with {:ok, body} <- HTTP.get("/bootstrap-static/", opts) do
-          value = if raw, do: body, else: Snapshot.from_api(body)
-          if use_cache, do: Cache.put(key, value)
-          {:ok, value}
-        end
+  defp fetch_and_cache(key, raw, use_cache, opts) do
+    with {:ok, body} <- HTTP.get("/bootstrap-static/", opts) do
+      value = if raw, do: body, else: Snapshot.from_api(body)
+      if use_cache, do: Cache.put(key, value)
+      {:ok, value}
     end
   end
 
