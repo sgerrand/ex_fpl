@@ -120,6 +120,20 @@ end)
 {:ok, %ExFPL.Snapshot{}} = ExFPL.Bootstrap.fetch(cache: false)
 ```
 
+## Contributing
+
+Run `mix check` locally before opening a pull request. This alias runs the same
+checks the git hooks enforce:
+
+- `mix format --check-formatted`
+- `mix compile --warnings-as-errors`
+- `mix credo --strict`
+- `mix deps.unlock --check-unused`
+
+Hooks are managed by [`git_hooks`](https://hex.pm/packages/git_hooks) and
+auto-install on `mix deps.get`. Pre-commit runs the four checks above; pre-push
+runs `mix test`.
+
 ## Documentation
 
 Documentation is generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
