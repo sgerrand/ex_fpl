@@ -58,7 +58,7 @@ defmodule ExFPL.HTTP do
 
     measurements = %{duration: System.monotonic_time() - started}
     metadata = %{path: path, result: elem(result, 0)}
-    :telemetry.execute([:ExFPL, :http, :request], measurements, metadata)
+    :telemetry.execute([:fpl, :http, :request], measurements, metadata)
 
     result
   end

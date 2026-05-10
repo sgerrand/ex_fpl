@@ -59,7 +59,7 @@ defmodule ExFPL.HTTPTest do
 
     :telemetry.attach(
       handler_id,
-      [:ExFPL, :http, :request],
+      [:fpl, :http, :request],
       &__MODULE__.forward_telemetry/4,
       %{pid: self(), ref: ref}
     )
@@ -67,7 +67,7 @@ defmodule ExFPL.HTTPTest do
     Req.Test.stub(ExFPL.HTTPStub, fn conn -> Req.Test.json(conn, %{}) end)
     assert {:ok, _} = HTTP.get("/whatever/")
 
-    assert_receive {:telemetry, ^ref, [:ExFPL, :http, :request], %{duration: dur},
+    assert_receive {:telemetry, ^ref, [:fpl, :http, :request], %{duration: dur},
                     %{path: "/whatever/", result: :ok}}
 
     assert is_integer(dur) and dur >= 0
