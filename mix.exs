@@ -50,6 +50,7 @@ defmodule ExFPL.MixProject do
       {:req, "~> 0.5"},
       {:jason, "~> 1.4"},
       {:telemetry, "~> 1.2"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},
       {:excoveralls, "~> 0.18", only: :test},
       {:plug, "~> 1.16", only: :test}
