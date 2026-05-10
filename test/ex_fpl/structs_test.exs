@@ -67,7 +67,7 @@ defmodule ExFPL.StructsTest do
 
   test "ExFPL.Entry.from_api/1 maps fields" do
     e = ExFPL.Entry.from_api(entry())
-    assert e.id == 12345
+    assert e.id == 12_345
     assert e.name == "My Team"
     assert e.player_first_name == "Jane"
     assert e.summary_overall_points == 1500
@@ -167,7 +167,7 @@ defmodule ExFPL.StructsTest do
 
   test "ExFPL.Me.from_api/1 maps fields" do
     m = ExFPL.Me.from_api(me())
-    assert m.player["entry"] == 12345
+    assert m.player["entry"] == 12_345
     assert m.watched == [1, 2, 3]
   end
 

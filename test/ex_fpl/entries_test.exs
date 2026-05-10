@@ -7,29 +7,29 @@ defmodule ExFPL.EntriesTest do
   describe "get/2" do
     test "returns an Entry struct" do
       stub_json(entry())
-      assert {:ok, %ExFPL.Entry{id: 12345, name: "My Team"}} = Entries.get(12345)
+      assert {:ok, %ExFPL.Entry{id: 12_345, name: "My Team"}} = Entries.get(12_345)
     end
 
     test "raw: true returns the original map" do
       stub_json(entry())
-      assert {:ok, %{"id" => 12345}} = Entries.get(12345, raw: true)
+      assert {:ok, %{"id" => 12_345}} = Entries.get(12_345, raw: true)
     end
 
     test "surfaces HTTP errors" do
       Req.Test.stub(ExFPL.HTTPStub, fn conn -> Plug.Conn.send_resp(conn, 404, "") end)
-      assert {:error, {:http_error, 404, _}} = Entries.get(12345, retry: false)
+      assert {:error, {:http_error, 404, _}} = Entries.get(12_345, retry: false)
     end
   end
 
   describe "history/2" do
     test "returns an EntryHistory struct" do
       stub_json(entry_history())
-      assert {:ok, %ExFPL.EntryHistory{current: [_]}} = Entries.history(12345)
+      assert {:ok, %ExFPL.EntryHistory{current: [_]}} = Entries.history(12_345)
     end
 
     test "raw: true returns the original map" do
       stub_json(entry_history())
-      assert {:ok, %{"current" => _}} = Entries.history(12345, raw: true)
+      assert {:ok, %{"current" => _}} = Entries.history(12_345, raw: true)
     end
   end
 
@@ -40,12 +40,12 @@ defmodule ExFPL.EntriesTest do
         Req.Test.json(conn, picks())
       end)
 
-      assert {:ok, %ExFPL.Picks{picks: [%ExFPL.Pick{}]}} = Entries.picks(12345, 3)
+      assert {:ok, %ExFPL.Picks{picks: [%ExFPL.Pick{}]}} = Entries.picks(12_345, 3)
     end
 
     test "raw: true returns the original map" do
       stub_json(picks())
-      assert {:ok, %{"picks" => _}} = Entries.picks(12345, 3, raw: true)
+      assert {:ok, %{"picks" => _}} = Entries.picks(12_345, 3, raw: true)
     end
   end
 
@@ -80,17 +80,17 @@ defmodule ExFPL.EntriesTest do
     test "returns MyTeam struct when given a session" do
       stub_json(my_team())
       session = Session.new(cookie: "pl_profile=x")
-      assert {:ok, %ExFPL.MyTeam{picks: [_]}} = Entries.my_team(12345, session: session)
+      assert {:ok, %ExFPL.MyTeam{picks: [_]}} = Entries.my_team(12_345, session: session)
     end
 
     test "raw: true returns the original map" do
       stub_json(my_team())
       session = Session.new(cookie: "pl_profile=x")
-      assert {:ok, %{"picks" => _}} = Entries.my_team(12345, session: session, raw: true)
+      assert {:ok, %{"picks" => _}} = Entries.my_team(12_345, session: session, raw: true)
     end
 
     test "raises without a session" do
-      assert_raise ArgumentError, fn -> Entries.my_team(12345, []) end
+      assert_raise ArgumentError, fn -> Entries.my_team(12_345, []) end
     end
   end
 end

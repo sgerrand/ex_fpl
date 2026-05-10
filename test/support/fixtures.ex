@@ -93,7 +93,7 @@ defmodule ExFPL.TestFixtures do
   def fixture do
     %{
       "id" => 1,
-      "code" => 12345,
+      "code" => 12_345,
       "event" => 1,
       "team_h" => 1,
       "team_a" => 2,
@@ -130,7 +130,7 @@ defmodule ExFPL.TestFixtures do
 
   def entry do
     %{
-      "id" => 12345,
+      "id" => 12_345,
       "name" => "My Team",
       "player_first_name" => "Jane",
       "player_last_name" => "Doe",
@@ -193,7 +193,7 @@ defmodule ExFPL.TestFixtures do
             "last_rank" => 1,
             "rank_sort" => 1,
             "total" => 1500,
-            "entry" => 12345,
+            "entry" => 12_345,
             "entry_name" => "My Team"
           }
         ]
@@ -211,7 +211,7 @@ defmodule ExFPL.TestFixtures do
           %{
             "id" => 1,
             "division" => 1,
-            "entry" => 12345,
+            "entry" => 12_345,
             "player_name" => "Jane Doe",
             "rank" => 1,
             "last_rank" => 1,
@@ -235,10 +235,10 @@ defmodule ExFPL.TestFixtures do
       "event" => 1,
       "finished" => true,
       "tiebreak" => nil,
-      "winner" => 12345,
+      "winner" => 12_345,
       "seed_value" => nil,
       "is_knockout" => false,
-      "entry_1_entry" => 12345,
+      "entry_1_entry" => 12_345,
       "entry_1_name" => "My Team",
       "entry_1_player_name" => "Jane",
       "entry_1_points" => 60,
@@ -246,7 +246,7 @@ defmodule ExFPL.TestFixtures do
       "entry_1_draw" => 0,
       "entry_1_loss" => 0,
       "entry_1_total" => 3,
-      "entry_2_entry" => 67890,
+      "entry_2_entry" => 67_890,
       "entry_2_name" => "Other",
       "entry_2_player_name" => "John",
       "entry_2_points" => 50,
@@ -275,7 +275,7 @@ defmodule ExFPL.TestFixtures do
 
   def me do
     %{
-      "player" => %{"entry" => 12345, "id" => 1, "first_name" => "Jane"},
+      "player" => %{"entry" => 12_345, "id" => 1, "first_name" => "Jane"},
       "watched" => [1, 2, 3]
     }
   end
