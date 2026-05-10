@@ -20,7 +20,7 @@ defmodule ExFPL.MixProject do
       package: package(),
 
       # Docs
-      docs: docs(),
+      docs: docs()
     ]
   end
 
