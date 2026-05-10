@@ -12,6 +12,7 @@ defmodule ExFPL.MixProject do
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
+      aliases: aliases(),
       test_coverage: [tool: ExCoveralls],
 
       # Hex
@@ -53,7 +54,19 @@ defmodule ExFPL.MixProject do
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},
       {:excoveralls, "~> 0.18", only: :test},
+      {:git_hooks, "~> 0.8", only: [:dev], runtime: false},
       {:plug, "~> 1.16", only: :test}
+    ]
+  end
+
+  defp aliases do
+    [
+      check: [
+        "format --check-formatted",
+        "compile --warnings-as-errors",
+        "credo --strict",
+        "deps.unlock --check-unused"
+      ]
     ]
   end
 
